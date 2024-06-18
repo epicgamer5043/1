@@ -57,13 +57,39 @@ document.addEventListener('keydown', event => {
 
 socket.on('replayActions', action => {
     if (action.type === 'mousemove') {
-        console.log(`Move mouse to (${action.x}, ${action.y})`);
-        // Code to move mouse programmatically would go here
+        simulateMousemove(action.x, action.y);
     } else if (action.type === 'click') {
-        console.log(`Click at (${action.x}, ${action.y})`);
-        // Code to click programmatically would go here
+        simulateClick(action.x, action.y);
     } else if (action.type === 'keydown') {
-        console.log(`Press key ${action.key}`);
-        // Code to press key programmatically would go here
+        simulateKeydown(action.key);
     }
 });
+
+function simulateMousemove(x, y) {
+    const mouseMoveEvent = new MouseEvent('mousemove', {
+        clientX: x,
+        clientY: y,
+        bubbles: true
+    });
+    document.dispatchEvent(mouseMoveEvent);
+    console.log(`Mouse moved to (${x}, ${y})`);
+}
+
+function simulateClick(x, y) {
+    const clickEvent = new MouseEvent('click', {
+        clientX: x,
+        clientY: y,
+        bubbles: true
+    });
+    document.dispatchEvent(clickEvent);
+    console.log(`Clicked at (${x}, ${y})`);
+}
+
+function simulateKeydown(key) {
+    const keyEvent = new KeyboardEvent('keydown', {
+        key: key,
+        bubbles: true
+    });
+    document.dispatchEvent(keyEvent);
+    console.log(`Key ${key} pressed`);
+}
