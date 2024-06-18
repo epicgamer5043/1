@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Action Recorder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Action Recorder</h1>
+        <button id="startRecording">Start Recording</button>
+        <button id="stopRecording">Stop Recording</button>
+        <button id="startReplay">Start Replay</button>
+        <input type="number" id="repetition" placeholder="Number of repetitions">
+        <input type="number" id="interval" placeholder="Interval in milliseconds">
+        <textarea id="variables" placeholder="Variables (JSON format)"></textarea>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
